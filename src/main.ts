@@ -14,6 +14,7 @@ import {
     WorkspaceLeaf,
     FileSystemAdapter,
 } from "obsidian";
+import {exec} from "child_process";
 import { LineAuthoringFeature } from "src/lineAuthor/lineAuthorIntegration";
 import { pluginRef } from "src/pluginGlobalRef";
 import { PromiseQueue } from "src/promiseQueue";
@@ -165,8 +166,6 @@ export default class ObsidianGit extends Plugin {
         );
 
         this.setRefreshDebouncer();
-
-        const {exec} = require('child_process');
 
         this.addCommand({
             id: "open-gitextensions-tool",
