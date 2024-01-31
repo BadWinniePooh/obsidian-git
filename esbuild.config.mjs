@@ -56,7 +56,7 @@ const context = await esbuild.context({
         }),
     ],
     inject: ["polyfill_buffer.js"],
-    outfile: "main.js",
+    outdir: "build",
 });
 
 if (prod) {
