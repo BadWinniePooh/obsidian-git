@@ -17,8 +17,7 @@
         "t": ""
     },
     "engines": {
-        "node": ">=18",
-        "pnpm": ">=7"
+        "node": ">=18"
     },
     "devDependencies": {
         "@codemirror/state": "^6.2.1",
