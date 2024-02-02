@@ -12,7 +12,9 @@ import {
     TAbstractFile,
     TFile,
     WorkspaceLeaf,
+    FileSystemAdapter,
 } from "obsidian";
+import { exec } from "child_process";
 import { LineAuthoringFeature } from "src/lineAuthor/lineAuthorIntegration";
 import { pluginRef } from "src/pluginGlobalRef";
 import { PromiseQueue } from "src/promiseQueue";
@@ -164,6 +166,27 @@ export default class ObsidianGit extends Plugin {
         );
 
         this.setRefreshDebouncer();
+
+        this.addCommand({
+            id: "open-gitextensions-tool",
+            name: "Open GitExtensions",
+            callback: async () => {
+                //const path = this.gitManager.getVaultPath("");
+                const path = (this.app.vault.adapter as FileSystemAdapter)
+                    .getBasePath()
+                    .replace(/\\/g, "\\\\");
+                //new Notice(`Path: ${path}`)
+
+                exec(`GitExtensions.exe ${path}`, (error, stdout, stderr) => {
+                    if (error) {
+                        new Notice(`exec error: ${error}`);
+                        return;
+                    }
+                    //new Notice(`stdout: ${stdout}`);
+                    //new Notice(`stderr: ${stderr}`);
+                });
+            },
+        });
 
         this.addCommand({
             id: "edit-gitignore",

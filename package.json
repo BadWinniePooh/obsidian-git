@@ -8,7 +8,8 @@
         "build": "node esbuild.config.mjs production",
         "release": "standard-version",
         "lint": "eslint --ext .ts,.svelte src",
-        "format": "prettier --check src"
+        "format": "prettier --check src",
+        "test": "npm run build && copyfiles --flat .\\build\\main.js C:\\Users\\NRueber\\source\\repos\\Obsidian.Notes\\.obsidian\\plugins\\obsidian-git"
     },
     "keywords": [],
     "author": "",
@@ -29,6 +30,7 @@
         "@types/node": "^20.5.7",
         "@typescript-eslint/eslint-plugin": "5.60.1",
         "@typescript-eslint/parser": "5.60.1",
+        "copyfiles": "^2.4.1",
         "esbuild": "^0.18.20",
         "esbuild-svelte": "^0.7.4",
         "eslint": "^8.48.0",
