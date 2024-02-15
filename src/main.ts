@@ -177,7 +177,7 @@ export default class ObsidianGit extends Plugin {
                     .replace(/\\/g, "\\\\");
                 //new Notice(`Path: ${path}`)
 
-                exec(`GitExtensions.exe ${path}`, (error, stdout, stderr) => {
+                exec(`GitExtensions.exe browse ${path}`, (error, stdout, stderr) => {
                     if (error) {
                         new Notice(`exec error: ${error}`);
                         return;
